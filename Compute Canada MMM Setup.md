@@ -5,7 +5,7 @@
 
 If you're unfamiliar with Compute Canada, make sure to check the introductory .md [here]().
 
-> **Note:** This will be updated once the current bug gets fixed, and we might not need to load python **3.6.3** to make it work, but for now the instructions try to copy Jeff's original environment as close as possible to try and avoid issues. When the current error gets fixed, we might change these instructions with python **3.9**.
+> **Note:** There is currently a bug that is not allowing anybody to build the mmm_api correctly on CC. This .md will be updated once the current bug gets fixed, and we might not need to load python **3.6.3** to make it work, but for now the instructions try to copy Jeff's original environment as close as possible to try and avoid issues. When the current error gets fixed, we might change these instructions with python **3.9**.
 
 1. First, make sure to clone the MMM_API into a folder in your CC machine.
 ```sh
