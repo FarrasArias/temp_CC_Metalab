@@ -27,7 +27,7 @@ pip install --no-index --upgrade setuptools
 ```
 4. Then we must install all requirements. The requirements.txt file can be found [here]().
 ```sh
-pip install -r requirements.txt
+pip install -r mmm_api_requirements.txt
 ```
 > **Note:** if you wish to install or reinstall any package individually, make sure to use the --no-index flag to install from the Compute Canada Wheels
 
