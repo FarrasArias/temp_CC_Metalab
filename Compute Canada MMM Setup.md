@@ -9,7 +9,7 @@ If you're unfamiliar with Compute Canada, make sure to check the introductory .m
 ```sh
 https://<TOKENNUMBERS>@github.com/jeffreyjohnens/MMM_API.git
 ```
-2. First we need to load python 3.6.3, so we must load nixpkgs/16.09 to the CC machine.
+2. First we need to load python 3.6.10.
 ```sh
 module load python/3.6.10
 ```
