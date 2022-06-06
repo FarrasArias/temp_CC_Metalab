@@ -96,12 +96,14 @@ Then, we must add the reformer argument to train.py:
 if args.arch == "gpt2":
     config = GPT2Config().from_json_file(args.config)
     model_cls = GPT2LMHeadModel
-  elif args.arch == "xl":
+elif args.arch == "xl":
     config = TransfoXLConfig().from_json_file(args.config)
     model_cls = TransfoXLLMHeadModel
-  elif args.arch == "reformer":
+#----------------- NEW CODE ---------------------
+elif args.arch == "reformer":
     config = ReformerConfig().from_json_file(args.config)
     model_cls = ReformerModelWithLMHead
+#-------------- NEW CODE ENDS ---------------------
 ```
 
 Finally, run the command shown above with the new config file and model argument:
