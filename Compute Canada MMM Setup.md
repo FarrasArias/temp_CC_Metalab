@@ -3,7 +3,7 @@
 # Compute Canada MMM Setup
 ## mmm_api Installation
 
-If you're unfamiliar with Compute Canada, make sure to check the introductory .md [here]().
+If you're unfamiliar with Compute Canada, make sure to check the introductory .md [here](https://github.com/FarrasArias/temp_CC_Metalab/blob/main/Compute%20Canada%20Guide.md).
 
 1. First, make sure to clone the MMM_API into a folder in your CC machine.
 ```sh
@@ -21,11 +21,11 @@ pip install --no-index --upgrade pip
 pip install --no-index --upgrade setuptools   # probably not necessary
 
 ```
-4. Then we must install all requirements. The requirements.txt file can be found [here]().
+4. Then we must install torch
 ```sh
 pip install torch==1.6.0
 ```
-> **Note:** if possible, make sure to use the --no-index flag to install from the Compute Canada Wheels
+> **Note:** if possible, when installing other dependencies you might need, make sure to use the --no-index flag to install from the Compute Canada Wheels
 
 > **Note:** Maybe the 2 following steps can now be ignored, since we're always working with StdEnv/2020 now.
 
@@ -134,7 +134,7 @@ Here is an example of the contents of a bash file to submit a mmm training job:
 #SBATCH --cpus-per-task=32
 #SBATCH --exclusive
 #SBATCH --mem=0
-#SBATCH --time=00:20:00
+#SBATCH --time=2-23:00
 #SBATCH --account=def-pasquier
 #SBATCH --mail-user USERNAME@sfu.ca  <---- MAKE SURE TO PUT YOUR EMAIL
 #SBATCH --mail-type ALL
@@ -147,4 +147,4 @@ source $SCRATCH/PY_3610/bin/activate  <---- SAME HERE, MAKE SURE THE DIRECTORY I
 python train.py --arch reformer --config /home/raa60/scratch/MMM_TRAINING-master/config/reformer.json --encoding EL_VELOCITY_DURATION_POLYPHONY_YELLOW_FIXED_ENCODER --ngpu 4 --dataset /home/raa60/scratch/dataset_NUM_BARS=4_OPZ_False.arr --batch_size 32 --label DELETE_ME
 ```
 
-In this case we are using 4 v1001 GPUs (**gres** argument) and we're asking for 20 minutes of time to run the job (**time** argument).
+In this case we are using 4 v1001 GPUs (**gres** argument) and we're asking for 2 days and 23 hours of time to run the job (**time** argument).
