@@ -108,10 +108,10 @@ elif args.arch == "reformer":
 
 Finally, run the command shown above with the new config file and model argument:
 ```sh
-python train.py --arch reformer --config /home/raa60/scratch/MMM_TRAINING-master/config/reformer.json --encoding EL_VELOCITY_DURATION_POLYPHONY_YELLOW_FIXED_ENCODER --ngpu 4 --dataset /home/raa60/scratch/farrastest_NUM_BARS=4_OPZ_False.arr --batch_size 32 --label DELETE_ME
+python train.py --arch reformer --config /home/raa60/scratch/MMM_TRAINING-master/config/reformer.json --encoding EL_VELOCITY_DURATION_POLYPHONY_YELLOW_FIXED_ENCODER --ngpu 4 --dataset /home/raa60/scratch/DATA_NUM_BARS=4_OPZ_False.arr --batch_size 32 --label DELETE_ME
 ```
 
-### Resource Allocation
+### Running Jobs
 
 To read the CC documentation, cick [here](https://docs.alliancecan.ca/wiki/Running_jobs). You can run small snippets of code to test things out without allocating any resources. However, to train a model or perform any time/resource consuming task, you must schedule a job. A list of different types of job scheduling will be added here.
 
@@ -121,4 +121,30 @@ You can start an interactive session on a compute node with salloc.
 salloc --time=3:0:0 --nodes 1 --cpus-per-task 32 --mem=128000 --account=def-pasquier
 ```
 
+#### 
+For time-expensive tasks it is better to create a bash file and submit a job with sbatch:
+```sh
+sbatch simple_job.sh
+```
 
+Here is an example of the contents of a bash file to submit a mmm training job:
+```sh
+#!/bin/bash
+#SBATCH --gres=gpu:v100l:4
+#SBATCH --cpus-per-task=32
+#SBATCH --exclusive
+#SBATCH --mem=0
+#SBATCH --time=00:20:00
+#SBATCH --account=def-pasquier
+#SBATCH --mail-user USERNAME@sfu.ca  <---- MAKE SURE TO PUT YOUR EMAIL
+#SBATCH --mail-type ALL
+#SBATCH --output=CCLOG/FILENAME.out  <---- MAKE SURE TO CHANGE THE NAME OF THE FILE
+
+source $SCRATCH/PY_3610/bin/activate   <---- THIS IS THE DIRECTORY TO THE ENV WHERE YOU HAVE THE mmm_api INSTALLED
+cd $SCRATCH/MMM_TRAINING-master
+module load StdEnv/2020 protobuf python/3.6.10
+source $SCRATCH/PY_3610/bin/activate  <---- SAME HERE, MAKE SURE THE DIRECTORY IS PLACED CORRECTLY
+python train.py --arch reformer --config /home/raa60/scratch/MMM_TRAINING-master/config/reformer.json --encoding EL_VELOCITY_DURATION_POLYPHONY_YELLOW_FIXED_ENCODER --ngpu 4 --dataset /home/raa60/scratch/dataset_NUM_BARS=4_OPZ_False.arr --batch_size 32 --label DELETE_ME
+```sh
+
+In this case we are using 4 v1001 GPUs (**gres** argument) and we're asking for 20 minutes of time to run the job (**time** argument).
