@@ -121,7 +121,7 @@ You can start an interactive session on a compute node with salloc.
 salloc --time=3:0:0 --nodes 1 --cpus-per-task 32 --mem=128000 --account=def-pasquier
 ```
 
-#### 
+#### Scheduled jobs (use this for training)
 For time-expensive tasks it is better to create a bash file and submit a job with sbatch:
 ```sh
 sbatch simple_job.sh
@@ -145,6 +145,6 @@ cd $SCRATCH/MMM_TRAINING-master
 module load StdEnv/2020 protobuf python/3.6.10
 source $SCRATCH/PY_3610/bin/activate  <---- SAME HERE, MAKE SURE THE DIRECTORY IS PLACED CORRECTLY
 python train.py --arch reformer --config /home/raa60/scratch/MMM_TRAINING-master/config/reformer.json --encoding EL_VELOCITY_DURATION_POLYPHONY_YELLOW_FIXED_ENCODER --ngpu 4 --dataset /home/raa60/scratch/dataset_NUM_BARS=4_OPZ_False.arr --batch_size 32 --label DELETE_ME
-```sh
+```
 
 In this case we are using 4 v1001 GPUs (**gres** argument) and we're asking for 20 minutes of time to run the job (**time** argument).
