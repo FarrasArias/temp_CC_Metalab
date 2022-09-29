@@ -45,3 +45,5 @@ Werkzeug==1.0.1 --no-index
 wrapt==1.11.2 --no-index
 zipp==3.1.0 --no-index
 importlib-resources==5.0.0
+tensorboardX==2.2
+protobuf==3.15.5
