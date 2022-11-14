@@ -148,3 +148,14 @@ python train.py --arch reformer --config /home/raa60/scratch/MMM_TRAINING-master
 ```
 
 In this case we are using 4 v1001 GPUs (**gres** argument) and we're asking for 2 days and 23 hours of time to run the job (**time** argument).
+
+#### Check jobs and eliminate session
+To show all the users
+```sh
+who -u
+```
+
+To kill all the sessions
+```sh
+pkill -u username
+```
