@@ -53,7 +53,7 @@ git clone https://github.com/pybind/pybind11.git
 ```
 10. That's it. Go back to the main MMM_API folder and run the following:
 ```sh
-bash python_build.sh
+bash build_python.sh
 ```
 Everything should get installed correctly in your python environment! If you log out and back in to CC make sure to activate the environment in which you installed the mmm_api.
 
